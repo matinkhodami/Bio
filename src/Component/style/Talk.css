@@ -1,0 +1,233 @@
+* {
+      --lightGreen : #8AEA92 ;
+      --green : #4B9C0A;
+      --lightRed : #DF7373 ;
+      --red : #CC444B;
+}
+.talk {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 3rem;
+      height: 80vh;
+      padding-block: 80px;
+      background: var(--light) ;
+}
+form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-inline: 2rem;
+      padding-block: 2rem ;
+      margin-top: 1.5rem;
+      border-radius: 0.5rem;
+      background: #fff;
+      box-shadow: inset 0 0 1rem 1px , 0 0 1rem 1px #fff; 
+}
+.dark-talk {
+      background: var(--darkBlue);
+}
+.talk h1 {
+      position: relative;
+      width: fit-content;
+      font-size: 1.4rem;
+      background: linear-gradient( var(--lightBlue) , var(--darkBlue));
+      background-clip: text;
+      color: transparent;
+}
+.dark-talk h1 {
+      background: linear-gradient( var(--lightOrange) , var(--purple));
+      background-clip: text;
+      color: transparent;
+}
+.talk h1::before , .talk h1::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 3px; 
+      background: linear-gradient( var(--lightBlue) , var(--darkBlue));
+      border-radius: 8px;
+}
+.dark-talk h1::before, .dark-talk h1::after {
+      background: linear-gradient( var(--lightOrange) , var(--purple) 65%);
+}
+.talk h1::after { 
+      right: -0.8rem;
+}
+.talk h1::before {
+      left: -0.8rem;
+}     
+
+
+.dark-talk form {
+      background: var(--darkBlue);
+      box-shadow: inset 0 0 .1rem 1px #fff; 
+}
+.form-section {
+      display: flex;
+      min-height: 70px;
+      max-height: max-content;
+      width: 100% ;
+      margin-bottom: 1rem;
+}
+
+.form-section fieldset {
+      position: relative;
+      flex-grow: 1;
+      padding: 0.3rem;
+      border-bottom: 2px solid var(--lightBlue);
+}
+.dark-talk .form-section fieldset {
+      border-bottom: none;
+}
+.form-section:first-child fieldset:first-child {
+      border-right: 2px solid var(--lightBlue);
+}
+.dark-talk .form-section:first-child fieldset:first-child {
+      border-right: none;
+}
+.form-section fieldset label {
+      position: absolute;
+      font-size: 0.9rem;
+      left: 0.8rem;
+      background: var(--orange);
+      padding: 0.2rem;
+      color: var(--light);
+      top: 5px;
+}
+.form-section fieldset input {
+      text-indent: 0.4rem;
+      width: 100%;
+      height: calc(100% - 1rem);
+      margin-top: 1rem;
+      border:1px solid var(--lightOrange);
+      background: transparent ;
+      font-size: 1rem;
+}
+.dark-talk input {
+      color: #fff;
+}
+.form-section fieldset input:focus {
+      box-shadow: inset 0 0 2rem 1px var(--lightBlue);
+      border: 1px solid var(--lightBlue);
+}
+
+.form-section fieldset textarea {
+      padding: 0.5rem;
+      margin-top: 1rem;
+      text-indent: 0.5rem;
+      font-size: 1rem;
+      width: calc(100% - 1rem);
+      height: 130px;
+      background: transparent;
+      border: 1px solid var(--orange);
+      resize: none;
+}
+.dark-talk textarea {
+      color: #fff;
+}
+.with-message {
+      margin-bottom: 2.3rem;
+}
+.message {
+      position: absolute;
+      font-size: 0.8rem;
+      top: calc(100% + 0.3rem ) ;
+      width: calc(100% - 1.4rem);
+      height: 0px;
+      padding: 0;
+      overflow: hidden;
+}
+.dark-talk .message {
+      top: calc(100% + 0.1rem ) ;
+      width: calc(100% - 1.6rem);
+}
+.err {
+      height: 0.8rem;
+      padding: 0.5rem;
+      box-shadow: 0 0 1rem 1px var(--lightRed) inset;
+      color: #CC444B;
+}
+.dark-talk .err {
+      color: var(--lightRed);
+      font-weight: 900;
+      border: 1px solid var(--red);
+      box-shadow: 0 0 0.5rem 1px var(--lightRed) inset;
+}
+.type {
+      height: 0.8rem;
+      padding: 0.5rem ;
+      box-shadow: 0 0 1rem 1px var(--lightBlue) inset;
+      color: var(--darkBlue);
+}
+.dark-talk .type {
+      font-weight: 900;
+      box-shadow: 0 0 0.5rem 1px var(--lightBlue) inset;
+      color: var(--lightBlue);
+      border: 1px solid var(--lightBlue);
+}
+.correct{
+      height: 0.8rem;
+      padding: 0.5rem;
+      color: var(--green);
+      box-shadow:  0 0 1rem 1px var(--lightGreen) inset;
+}
+.dark-talk .correct {
+      font-weight: 900;
+      color: var(--lightGreen);
+      box-shadow:  0 0 0.5rem 1px var(--lightGreen) inset;
+      border: 1px solid var(--lightGreen);
+}
+form button{
+      cursor: pointer;
+      margin-right: auto;
+      border-radius: 1rem;
+      background: transparent;
+      box-shadow: 0 0 0.5rem 1px var(--lightGreen) inset , 0 0 0.5rem 1px var(--lightGreen) ;
+      color: var(--green);
+      border: 2px solid var(--lightGreen);
+      font-size: 1rem ;
+      padding: 0.5rem 1rem ;
+}
+.dark-talk button {
+      color: var(--lightGreen);
+      box-shadow: 0 0 0.5rem 1px var(--lightGreen) inset ;
+}
+form button > i {
+      width: 0;
+      scale: 0;
+}
+
+form button:hover {
+      box-shadow: 0 0 2rem 1px var(--lightGreen) inset , 0 0 1rem 1px var(--lightGreen) ;
+}
+.dark-talk button:hover {
+      box-shadow: 0 0 1rem 1px var(--lightGreen) inset , 0 0 0.5rem 1px var(--lightGreen) ;
+
+}
+
+form button:hover > i {
+      width: 0.5rem;
+      margin-left: 0.3rem;
+      scale: 1;
+}
+
+@media screen and ( max-width: 614px ) {
+      .form-section:first-child  .err {
+            height: 1.8rem;
+      }
+      .with-message:first-child {
+            margin-bottom: 3.2rem;
+      }
+}
+@media screen and ( min-width: 768px){
+      form {
+            width: 700px;
+      }
+}
+@media screen and ( max-height: 860px ){
+      body {
+            padding-bottom: 2.8rem;
+      }
+}

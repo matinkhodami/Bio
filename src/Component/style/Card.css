@@ -1,0 +1,103 @@
+@property --url {
+      syntax:  "<url>";
+      inherits: false;
+      initial-value: '';
+}
+* {
+      --pad : 8px ;
+}
+.card {
+      scale: 0.9;
+	position: relative;
+      flex-shrink: 0;
+	width: 300px;
+	height: 418px;
+}
+
+.card::before {
+      content: "";
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient( 90deg , var(--orange) , var(--lightOrange) , var(--purple) );
+      box-shadow: -4px -4px 1rem var(--orange) , 4px 4px 1rem var(--purple);
+      border-radius: var(--pad);
+}
+.card::after {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      width: 100%;
+      height: 100% ;
+      background: var(--lightBlue);
+      filter: blur(4rem);
+}
+.content { 
+      position: absolute;
+      z-index: 3;
+      width: calc(100% - var(--pad) - 2rem);
+      height:  calc(100% - var(--pad) - 2rem);
+      left: calc( var(--pad) / 2);
+      top: calc( var(--pad) / 2 );
+      backdrop-filter: blur(1rem);
+      border-radius: var(--pad);
+      color: #fff;
+      padding: 1rem;
+}
+.content h2 {
+      margin-bottom: 0.5rem ;
+}
+.content .img {
+      width: 100%;
+      aspect-ratio: 3 / 3.4 ;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+}
+.content button {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 0 0.8rem 0.1rem inset var(--darkBlue);
+      color: #fff;
+      background: transparent;
+      margin-top: 0.5rem;
+      border-radius: 1rem;
+      font-weight:900 ;
+      font-size: 1.1rem;
+      height: 3rem;
+      aspect-ratio: 3 / 1;
+}
+.content button::after {
+      content: "";
+      position: absolute;
+      background: var(--orange);
+      border-radius: 1rem;
+      height: 100%;
+      width: 100%;
+      right:-100% ;
+      top: 0;
+      z-index: -1;
+      transition: all 0.3s;
+}
+.content button:hover::after {
+      right: 0;
+}
+.content button:hover i  {
+      width: 1rem;
+      scale: 1;
+}
+.content button i {
+      margin-left: 0.5rem;
+      width: 0;
+      scale: 0;
+      transition: all 0.3s;
+}
+
+.focus {
+      scale: 1 ;
+}

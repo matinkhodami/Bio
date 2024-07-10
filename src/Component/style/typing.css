@@ -1,0 +1,107 @@
+@property --length {
+      type : "<number>" ;
+      inherits: false;
+      initial-value: 0;
+}
+/* @property --stepBack {
+      type : "<number>" ;
+      inherits:  false;
+      initial-value:  0;
+} */
+@property --letter {
+      type : "<length>" ;
+      inherits: false;
+      initial-value: 0 ;
+}
+.typing {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--darkBlue);
+      background: -webkit-linear-gradient(180deg , var(--lightBlue), var(--darkBlue));
+      background: linear-gradient(180deg , var(--lightBlue), var(--darkBlue)) ;
+      background-clip: text;
+      color: transparent;
+}
+.dark .typing {
+      background: var(--orange);
+      background: -webkit-linear-gradient(180deg , var(--lightOrange), var(--purple));
+      background: linear-gradient(180deg , var(--lightOrange), var(--purple)) ;
+      background-clip: text;
+}
+.typing::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      background: #fff;
+      height: 100%;
+}
+.dark .typing::before {
+      background: var(--darkBlue);
+}
+
+
+
+.typing::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 2rem;
+      background: var(--darkBlue);  /* fallback for old browsers */
+      background: -webkit-linear-gradient( var(--lighterBlue), var(--darkBlue));  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient( var(--lighterBlue), var(--darkBlue)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.dark .typing::after  {
+      background-image: linear-gradient( 80deg, var(--purple), var(--orange));
+}
+
+.back::before {
+      animation: delete 1000ms steps(var(--length)) forwards ;
+}
+.forward::before {
+      animation: typing 800ms steps(var(--length)) forwards;
+}
+.back::after {
+      animation: back 1000ms steps(var(--length)) forwards , cursor 0.4s infinite ;
+}
+.forward::after {
+      animation: forward 800ms steps(var(--length)) forwards, cursor 0.4s infinite  ;
+}
+
+.delete{
+      animation: deletePerLetter 500ms 0.4s  forwards;
+}
+.delete::after {
+      right: -5px;
+      animation: cursor 0.5s 6 , disapear 0.5s 3s forwards;
+}
+
+@keyframes deletePerLetter {
+      from { width: 100%; }
+      to { width: calc( var(--letter) ); }
+}
+@keyframes cursor {
+      0% { opacity: 1;}
+      50% { opacity: 1;}
+      100% { opacity: 0;}
+}
+@keyframes typing {
+      from { width: 100%; }
+      to { width: 0; }
+}
+@keyframes forward {
+      from { right: 100%; }
+      to { right: -5px; }
+}
+@keyframes back {
+      from { right: -5px; }
+      to { right: 100%; }
+}
+@keyframes delete {
+      from { width: 0; }
+      to { width: 100%; }
+}
+@keyframes disapear {
+      from { opacity: 1; }
+      to { opacity: 0; }
+}

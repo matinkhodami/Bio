@@ -1,0 +1,154 @@
+* {
+      --linkSize : 1.8rem ;
+}
+@property --rotateValue {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
+}
+header {
+      z-index: 999;
+      position: fixed;
+      width: 100%;
+      height: 60px;
+      box-shadow: 1px 1px 1rem 0.5rem var(--darkBlue) ;
+      display: flex;
+      justify-content: space-between ;
+      align-items: center;
+      background-color: antiquewhite;
+}
+.dark:is(header){
+      background: var(--darkBlue);
+      box-shadow: 1px 1px 1rem 0.5rem var(--darkBlue) ;
+}
+.dark:is(header)::after {
+      background: var(--orange);  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, var(--purple), var(--orange));  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, var(--purple), var(--orange)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+header::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: var(--darkBlue);  
+      background: -webkit-linear-gradient( 45deg, var(--lighterBlue), var(--darkBlue));  
+      background: linear-gradient(45deg, var(--lighterBlue), var(--darkBlue));
+      position: absolute;
+      bottom: -2px;
+}
+.left {
+      display: flex;
+      position: relative;
+      font-size: 1.5rem;
+      padding-left: 1rem;
+}
+.right {
+      padding-inline: 1rem;
+}
+
+.links {
+      position: relative;
+      margin-left: 0.8rem;
+}
+
+
+
+.link a {
+      font-size: var(--linkSize);
+      position: absolute;
+      top: -3rem;
+      color: transparent;
+      background: var(--darkBlue);
+      background: -moz-linear-gradient( var(--rotateValue), var(--lightBlue) , var(--darkBlue) );
+      background: linear-gradient(var(--rotateValue), var(--lightBlue), var(--darkBlue));
+      background: -webkit-linear-gradient(var(--rotateValue), var(--lighterBlue), var(--darkBlue));
+      background-clip: text;
+}
+.dark .link a {
+      background: -moz-linear-gradient( var(--rotateValue), var(--purple) , var(--orange) );
+      background: linear-gradient(var(--rotateValue), var(--purple), var(--orange));
+      background: -webkit-linear-gradient(var(--rotateValue), var(--purple), var(--orange));
+      background-clip: text;
+}
+    
+@keyframes backRotate {
+      from { --rotateValue: 0deg; }
+      to { --rotateValue: 360deg; }
+}
+
+/* Telegram */
+.links a:nth-child(1) {
+      left: 0.5rem ;
+      animation: moveLogo 0.6s ease-in 0.2s forwards  , backRotate 2.5s infinite ease-in-out forwards ;
+}
+/* Linkdin */
+.links a:nth-child(2) {
+      left: calc(var(--linkSize) + 0.7rem );
+      animation: moveLogo 0.6s ease-in 0.4s forwards , backRotate 2.8s infinite ease-in-out forwards ;
+}
+/* GitHub */
+.links a:nth-child(3) {
+      left: calc( var(--linkSize) * 2 + 0.9rem );
+      animation: moveLogo 0.6s ease-in 0.6s forwards, backRotate 3s infinite ease-in-out forwards ;
+}
+
+.links a:hover  > .link-option {
+      z-index: 3;
+      display: flex;
+      opacity: 0;
+      justify-content: space-evenly;
+      align-items: center;
+      position: absolute;
+      transition:  border 0.2s ;
+      color: var(--darkBlue);
+      border: 2px solid var(--darkBlue);
+      width: 90px;
+      height: 45px;
+      border-radius: 8px ;
+      backdrop-filter: blur(1rem) saturate(200%);
+      animation: showOption 0.5s forwards  0.02s;
+}
+.dark .links a:hover  > .link-option {
+      color: antiquewhite;
+      border: 2px solid antiquewhite;
+}
+.link-option {
+      font-size: 1.3rem;
+      display: none;
+}
+.link-option span {
+      font-size: 0.5rem;
+      display: block;
+      background: var(--darkBlue);
+      height: 100%;
+      width: 2px;
+}
+.dark  .link-option span {
+      background: antiquewhite;
+}
+
+@keyframes showOption {
+      from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes moveLogo {
+      from { top: -3rem; }
+      to { top: -0.1rem; }
+}
+
+.links::before {
+      content:  "";
+      position: absolute;
+      left: 0;
+      display: block;
+      background: var(--darkBlue);
+      background: -webkit-linear-gradient( 45deg , var(--lightBlue) 0% , var(--orange)) 0%;
+      border-radius: 8px;
+      height: 100%;
+      width: 3px;
+      animation: moveLine 0.5s ease-in-out ;
+}
+@keyframes moveLine {
+      from { left: -5rem; }
+      to {  left: 0; }
+}

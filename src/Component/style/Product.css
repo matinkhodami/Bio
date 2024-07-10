@@ -1,0 +1,128 @@
+article {
+      position: relative;
+      overflow: hidden;
+      height: 89vh;
+      padding: 1rem;
+      padding-top: 85px;
+      background: var(--light);
+}
+.dark-article {
+      background: var(--darkBlue);
+} 
+article h1 {
+      position: relative;
+      padding-left: 1rem;
+      background: linear-gradient( var(--lightBlue) , var(--darkBlue));
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+}
+article h1::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient( var(--lightBlue) , var(--darkBlue));
+}
+.dark-article h1 {
+      background: linear-gradient( var(--lightBlue) , var(--lighterBlue) );
+      background-clip: text;
+}
+.dark-article p {
+      color: var(--light);
+}
+
+.card-wrapper {
+      box-shadow: inset 0 0 1rem 1px #222;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      display: flex;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar; 
+      padding:  3rem  3rem 3rem 320px;
+      scroll-padding-left: 316px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x proximity;
+      scroll-snap-align: start;
+}
+.dark-article .card-wrapper {
+      box-shadow: 0 0 1rem 1px var(--lightBlue);
+}
+.scroller {
+      display: flex;
+      gap: 3rem;
+}
+.card-wrapper::-webkit-scrollbar {
+      display: none;
+}
+
+.cards-title {
+      position: absolute;
+      top: 9.8rem ;
+      width: 300px;
+      height: calc(418px + 6rem);
+      overflow: hidden; 
+      color: #fff;
+      border-radius: 0.5rem;
+      z-index: 4;
+}
+.cards-title-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+}
+.cards-title-wrapper > img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+}
+.cards-title-wrapper::after {
+      position: absolute ;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      border-radius: 0.5rem;
+      z-index: 3;
+      content: "";
+      width: 85%;
+      height: 80%;
+      background: #585858;
+      opacity: 0.6;
+      backdrop-filter: blur(2rem);
+}
+.cards-title-wrapper > p {
+      width: 80%;
+      text-align: center;
+      z-index: 999;
+}
+@media only screen and (max-width: 673px) {
+      .cards-title {
+            transform: translateY(-100%);
+            position: relative;
+            width: 100%;
+            height: 150px;
+      }
+      .cards-title-wrapper > img {
+            width: 100%;
+            top: -50%;
+            height: unset;
+      }
+      .cards-title::after {
+            transform: translateY(-50%) translateX(-50%);
+            top: 50%;
+            height: 60%;
+      }
+      .cards-title p {
+            width: 50%;
+      }
+      .card-wrapper { 
+            scroll-padding-left: 2rem;
+            padding-left: 2rem;
+      }
+}
